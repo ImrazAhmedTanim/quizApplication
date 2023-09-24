@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Import Axios
+
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -23,15 +25,13 @@ export default function Login() {
     // Implement this check here
 
     try {
-      const response = await fetch('http://localhost:4000/quiz/api/login', {
-        method: 'POST',
+      const response = await axios.post('http://localhost:4000/quiz/api/login', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
       });
-  
-      if (response.ok) {
+
+      if (response.status === 200) {
         // Successfully sent data to the server
         window.alert('LOGIN SUCCESSFUL');
         console.log('Data sent successfully');

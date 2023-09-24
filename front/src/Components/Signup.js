@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate,Link} from 'react-router-dom';
+import axios from 'axios'; // Import Axios
+
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -47,28 +49,26 @@ if (!formData.passwordMatch) {
   return; // Prevent further execution
 };
   
-    try {
-      const response = await fetch('http://localhost:4000/quiz/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.ok) {
-        // Successfully sent data to the server
-        window.alert('REGISTRATION SUCCESSFUL');
-        console.log('Data sent successfully');
-        navigate('/Login');
-      } else {
-        window.alert('INVALID REGISTRATION');
-        console.error('Error sending data to the server');
-      }
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  };
+try {
+  const response = await axios.post('http://localhost:4000/quiz/api/signup', formData, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.status === 200) {
+    // Successfully sent data to the server
+    window.alert('REGISTRATION SUCCESSFUL');
+    console.log('Data sent successfully');
+    navigate('/Login');
+  } else {
+    window.alert('INVALID REGISTRATION');
+    console.error('Error sending data to the server');
+  }
+} catch (error) {
+  console.error('An error occurred:', error);
+}
+};
 
   return (
     <div>  <main className="main">
