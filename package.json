@@ -8,7 +8,7 @@
     "start-back": "cd backend && node index.js",
     "install-front": "cd front && npm install",
     "build-front": "cd front && npm run build",
-    "start-front": "cd front && npm run start"
+    "start-front": "cd front && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
