@@ -5,7 +5,7 @@ const cors = require('cors'); // Import the cors package
 
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://quiz-application-gold.vercel.app/',
     optionsSuccessStatus: 200, // Some legacy browsers choke on 204
   };
 

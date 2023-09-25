@@ -50,7 +50,7 @@ if (!formData.passwordMatch) {
 };
   
 try {
-  const response = await axios.post('http://localhost:4000/quiz/api/signup', formData, {
+  const response = await axios.post('https://quiztanim.onrender.com/quiz/api/signup', formData, {
     headers: {
       'Content-Type': 'application/json',
     },

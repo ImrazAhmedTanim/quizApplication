@@ -1,0 +1,25 @@
+{
+  "name": "quiz-application",
+  "version": "1.0.0",
+  "description": "node.js chat application",
+  "main": "index.js",
+  "scripts": {
+    "install-back": "cd backend && npm install",
+    "start-back": "cd backend && node index.js",
+    "install-front": "cd front && npm install",
+    "build-front": "cd front && npm run build",
+    "start-front": "cd front && npm run start"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImrazAhmedTanim/quizApplication.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImrazAhmedTanim/quizApplication/issues"
+  },
+  "homepage": "https://github.com/ImrazAhmedTanim/quizApplication#readme"
+}
