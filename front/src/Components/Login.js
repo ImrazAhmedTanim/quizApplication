@@ -25,7 +25,7 @@ export default function Login() {
     // Implement this check here
 
     try {
-      const response = await axios.post('http://localhost:4000/quiz/api/login', formData, {
+      const response = await axios.post('https://quiztanim.onrender.com/quiz/api/login', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
