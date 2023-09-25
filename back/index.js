@@ -5,7 +5,7 @@ const cors = require('cors'); // Import the cors package
 
 const app = express();
 const corsOptions = {
-    origin: 'https://quiz-application-8qb4.vercel.app/',
+    origin: 'https://quiz-application-8qb4.vercel.app',
     optionsSuccessStatus: 200, // Some legacy browsers choke on 204
   };
 
