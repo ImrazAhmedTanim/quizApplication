@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
+
 import axios from 'axios'; // Import Axios
 
 
@@ -9,6 +11,8 @@ export default function Login() {
     password: '',
   });
   const navigate = useNavigate();
+  const { handleAuthInfo,isLoggedIn } = useAuth();  // Ensure you're using the correct context values
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -35,6 +39,8 @@ export default function Login() {
         // Successfully sent data to the server
         window.alert('LOGIN SUCCESSFUL');
         console.log('Data sent successfully');
+        handleAuthInfo();
+
         navigate('/');
       } else {
         window.alert('INVALID LOGIN');
