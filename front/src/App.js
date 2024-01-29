@@ -7,6 +7,7 @@ import Signup from "./Components/Signup";
 import Nav from './Components/Nav';
 import Login from './Components/Login';
 import Quiz from './Components/Quiz';
+import AuthInfo from './Components/AuthContext';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     
     <Router>
       <>
+      <AuthInfo>
     <Nav />
       <Routes>
       <Route path="/" element={<Home />} />
@@ -26,7 +28,7 @@ function App() {
 
 
       </Routes>
-    
+    </AuthInfo>
     </>
     </Router>
   );

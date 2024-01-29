@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate,Link} from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import axios from 'axios'; // Import Axios
 
 
@@ -12,6 +13,8 @@ export default function Signup() {
     agreedToTerms: false,
   });
   const navigate = useNavigate();
+  const { handleAuthInfo,isLoggedIn } = useAuth();  // Ensure you're using the correct context values
+
   
 
 
@@ -60,7 +63,9 @@ try {
     // Successfully sent data to the server
     window.alert('REGISTRATION SUCCESSFUL');
     console.log('Data sent successfully');
-    navigate('/Login');
+    handleAuthInfo();
+
+    navigate('/');
   } else {
     window.alert('INVALID REGISTRATION');
     console.error('Error sending data to the server');
