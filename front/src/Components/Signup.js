@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate,Link} from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import "../styles/spinner.css";
 import axios from 'axios'; // Import Axios
 
 
@@ -60,7 +61,7 @@ try {
       'Content-Type': 'application/json',
     },
   });
-setLoading(false);
+setLoading(false)
   if (response.status === 200) {
     
     // Successfully sent data to the server
@@ -81,14 +82,12 @@ setLoading(false);
   return (
     <div>  <main className="main">
      {loading?(
- <div className='flex items-center justify-center min-h-screen'>
- <button type="button" className="bg-indigo-400 h-max w-max rounded-lg text-white font-bold hover:bg-indigo-300 hover:cursor-not-allowed duration-[500ms,800ms]" disabled>
-     <div className="flex items-center justify-center m-[10px]"> 
-         <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
-         <div className="ml-2"> Processing...</div>
-     </div>
- </button>
-</div>        ):(
+ <div class="spinner-container">
+ <div class="spinner"></div>
+ <div class="text">Processing...</div>
+</div>
+
+      ):(
     <div className="container">
       <h1>Create an account</h1>
       <div className="column">

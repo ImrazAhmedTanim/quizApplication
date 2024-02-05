@@ -10,6 +10,7 @@ export default function Login() {
     email: '',
     password: '',
   });
+  const [loading,setLoading] = useState(false);
   const navigate = useNavigate();
   const { handleAuthInfo,isLoggedIn } = useAuth();  // Ensure you're using the correct context values
 
@@ -27,14 +28,14 @@ export default function Login() {
     
     // Check if password and confirmPassword match
     // Implement this check here
-
+    setLoading(true);
     try {
       const response = await axios.post('https://quiztanim.onrender.com/quiz/api/login', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+setLoading(false);
       if (response.status === 200) {
         // Successfully sent data to the server
         window.alert('LOGIN SUCCESSFUL');
@@ -54,6 +55,12 @@ export default function Login() {
   return (
     <div>
       <main className="main">
+        {loading?(
+           <div class="spinner-container">
+           <div class="spinner"></div>
+           <div class="text">Processing...</div>
+          </div>
+        ):(
         <div className="container">
           <h1>Login to your account</h1>
           <div className="column">
@@ -93,6 +100,7 @@ export default function Login() {
             </form>
           </div>
         </div>
+        )}
       </main>
     </div>
   );
