@@ -13,6 +13,8 @@ export default function Signup() {
     agreedToTerms: false,
   });
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // New state variable
+
   const { handleAuthInfo,isLoggedIn } = useAuth();  // Ensure you're using the correct context values
 
   
@@ -51,15 +53,16 @@ if (!formData.passwordMatch) {
   window.alert('Password and Confirm Password do not match.');
   return; // Prevent further execution
 };
-  
+  setLoading(true);
 try {
   const response = await axios.post('https://quiztanim.onrender.com/quiz/api/signup', formData, {
     headers: {
       'Content-Type': 'application/json',
     },
   });
-
+setLoading(false);
   if (response.status === 200) {
+    
     // Successfully sent data to the server
     window.alert('REGISTRATION SUCCESSFUL');
     console.log('Data sent successfully');
@@ -77,6 +80,15 @@ try {
 
   return (
     <div>  <main className="main">
+     {loading?(
+ <div className='flex items-center justify-center min-h-screen'>
+ <button type="button" className="bg-indigo-400 h-max w-max rounded-lg text-white font-bold hover:bg-indigo-300 hover:cursor-not-allowed duration-[500ms,800ms]" disabled>
+     <div className="flex items-center justify-center m-[10px]"> 
+         <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
+         <div className="ml-2"> Processing...</div>
+     </div>
+ </button>
+</div>        ):(
     <div className="container">
       <h1>Create an account</h1>
       <div className="column">
@@ -120,6 +132,7 @@ try {
         </form>
       </div>
     </div>
+)}
   </main></div>
   )
 }
